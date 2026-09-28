@@ -1,0 +1,29 @@
+{
+	"name": "bibliotk-ui",
+	"version": "0.1.0",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"description": "Librería de componentes de interfaz de BiblioTK (React 19 + Tailwind CSS 4).",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js",
+		"./theme.css": "./src/styles/theme.css"
+	},
+	"scripts": {
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"check": "biome check --write"
+	},
+	"peerDependencies": {
+		"@phosphor-icons/react": "^2.1.10",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
+		"react-router-dom": "^7.18.0",
+		"tailwindcss": "^4.3.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.12"
+	}
+}
