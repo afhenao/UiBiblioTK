@@ -1,0 +1,29 @@
+/*
+ * Hoja compilada de bibliotk-ui (`npm run build` → dist/bibliotk-ui.css).
+ * Trae el reset de Tailwind (preflight), todos los tokens como variables CSS,
+ * los estilos base y los componentes. Las apps la importan tal cual: no hace falta
+ * que Tailwind lea el código de la librería.
+ *
+ * Los componentes van en la capa `components`, así las utilidades de la app
+ * (capa `utilities`) siempre pueden ajustarlos con `className`.
+ */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "./theme.css" theme(static);
+@import "./base.css";
+
+@import "../components/ui/Alert.css";
+@import "../components/ui/Button.css";
+@import "../components/ui/Checkbox.css";
+@import "../components/ui/CoverImage.css";
+@import "../components/ui/Dialog.css";
+@import "../components/ui/Logo.css";
+@import "../components/ui/TextField.css";
+@import "../components/ui/PasswordField.css";
+@import "../components/layout/AuthLayout.css";
+@import "../components/layout/ErrorBoundary.css";
+@import "../components/layout/PanelLayout.css";
+@import "../components/layout/ReaderLayout.css";
+@import "../components/data/DonutChart.css";

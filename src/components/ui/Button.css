@@ -1,0 +1,72 @@
+@layer components {
+	.btk-button {
+		@apply inline-flex items-center justify-center gap-2.5 rounded-full font-semibold tracking-[-0.01em] whitespace-nowrap select-none transition-[background-color,color,box-shadow,transform] duration-150 ease-out-strong active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60;
+	}
+
+	.btk-button--sm {
+		@apply h-10 px-4 text-sm;
+	}
+
+	.btk-button--md {
+		@apply h-12 px-5 text-[15px];
+	}
+
+	.btk-button--lg {
+		@apply h-14 px-6 text-base;
+	}
+
+	.btk-button--primary {
+		@apply bg-pine-900 text-sand-50 shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_12px_24px_-14px_rgb(11_34_28/0.7)] hover:bg-pine-800;
+	}
+
+	.btk-button--accent {
+		@apply bg-honey-400 text-pine-950 shadow-[inset_0_1px_0_rgb(255_255_255/0.35)] hover:bg-honey-300;
+	}
+
+	.btk-button--outline {
+		@apply bg-transparent text-pine-900 shadow-[inset_0_0_0_1px_var(--color-line)] hover:bg-pine-900/5;
+	}
+
+	.btk-button--ghost {
+		@apply bg-sand-50/10 text-sand-50 hover:bg-sand-50/15;
+	}
+
+	.btk-button--danger {
+		@apply bg-clay-600 text-sand-50 shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_12px_24px_-14px_rgb(134_51_31/0.7)] hover:bg-clay-700;
+	}
+
+	.btk-button__spinner {
+		@apply size-[18px] animate-[spin_700ms_linear_infinite];
+	}
+
+	/* Círculo del ícono final (`trailingIcon`): se desliza un poco al pasar el cursor por el botón */
+	.btk-button__icon {
+		@apply -mr-3 grid size-9 place-items-center rounded-full transition-transform duration-200 ease-out-strong;
+	}
+
+	@media (hover: hover) {
+		.btk-button:hover .btk-button__icon {
+			@apply translate-x-0.5;
+		}
+	}
+
+	.btk-button--primary .btk-button__icon {
+		@apply bg-sand-50/10 text-honey-300;
+	}
+
+	.btk-button--accent .btk-button__icon {
+		@apply bg-pine-950/10 text-pine-950;
+	}
+
+	.btk-button--outline .btk-button__icon {
+		@apply bg-pine-900/5 text-pine-900;
+	}
+
+	.btk-button--ghost .btk-button__icon {
+		@apply bg-sand-50/10 text-sand-50;
+	}
+
+	.btk-button--danger .btk-button__icon {
+		@apply bg-sand-50/15 text-sand-50;
+	}
+}

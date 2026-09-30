@@ -1,0 +1,21 @@
+@layer components {
+	.btk-alert {
+		@apply flex items-start gap-3 rounded-2xl px-4 py-3 text-[13px] leading-snug font-medium motion-safe:animate-rise-sm;
+	}
+
+	.btk-alert--error {
+		@apply bg-clay-50 text-clay-700 shadow-[inset_0_0_0_1px_rgb(163_64_47/0.18)];
+	}
+
+	.btk-alert--info {
+		@apply bg-honey-100 text-honey-700 shadow-[inset_0_0_0_1px_rgb(168_112_44/0.2)];
+	}
+
+	.btk-alert--success {
+		@apply bg-pine-50 text-pine-800 shadow-[inset_0_0_0_1px_rgb(47_93_78/0.18)];
+	}
+
+	.btk-alert__icon {
+		@apply mt-px size-[18px] shrink-0;
+	}
+}

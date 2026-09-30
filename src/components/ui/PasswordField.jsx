@@ -1,9 +1,11 @@
-import { Eye, EyeSlash } from "@phosphor-icons/react";
+import { Eye } from "@phosphor-icons/react/Eye";
+import { EyeSlash } from "@phosphor-icons/react/EyeSlash";
 import { useState } from "react";
 import TextField from "./TextField.jsx";
 
 function PasswordField(props) {
 	const [isVisible, setIsVisible] = useState(false);
+	const Icon = isVisible ? EyeSlash : Eye;
 
 	return (
 		<TextField
@@ -15,13 +17,9 @@ function PasswordField(props) {
 					onClick={() => setIsVisible((visible) => !visible)}
 					aria-label={isVisible ? "Ocultar contraseña" : "Mostrar contraseña"}
 					aria-pressed={isVisible}
-					className="grid size-9 place-items-center rounded-lg text-ink-soft transition-colors duration-150 hover:bg-pine-900/5 hover:text-pine-900"
+					className="btk-password-toggle"
 				>
-					{isVisible ? (
-						<EyeSlash aria-hidden="true" className="size-[18px]" />
-					) : (
-						<Eye aria-hidden="true" className="size-[18px]" />
-					)}
+					<Icon aria-hidden="true" className="btk-password-toggle__icon" />
 				</button>
 			}
 		/>

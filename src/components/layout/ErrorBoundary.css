@@ -1,0 +1,33 @@
+@layer components {
+	.btk-error-screen {
+		@apply grid min-h-dvh place-items-center bg-sand-100 p-6;
+	}
+
+	.btk-error-screen__card {
+		@apply max-w-sm rounded-[28px] bg-sand-50 p-8 text-center shadow-[inset_0_0_0_1px_var(--color-sand-200)];
+	}
+
+	.btk-error-screen__icon {
+		@apply mx-auto grid size-12 place-items-center rounded-2xl bg-clay-50 text-clay-600;
+	}
+
+	.btk-error-screen__glyph {
+		@apply size-6;
+	}
+
+	.btk-error-screen__title {
+		@apply mt-5 font-display text-2xl font-extrabold tracking-[-0.03em] text-pine-950;
+	}
+
+	.btk-error-screen__text {
+		@apply mt-2 text-sm leading-relaxed text-ink-soft;
+	}
+
+	.btk-error-screen__action {
+		@apply mt-6 w-full;
+	}
+
+	.btk-error-screen__reload-icon {
+		@apply size-[18px];
+	}
+}

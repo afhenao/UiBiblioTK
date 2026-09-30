@@ -1,0 +1,17 @@
+@layer components {
+	.btk-reader {
+		@apply min-h-dvh bg-sand-100;
+	}
+
+	.btk-reader__header {
+		@apply mx-auto flex h-20 max-w-6xl items-center justify-between px-4 md:px-8;
+	}
+
+	.btk-reader__logout-icon {
+		@apply size-4;
+	}
+
+	.btk-reader__main {
+		@apply mx-auto w-full max-w-6xl px-4 pb-20 md:px-8;
+	}
+}

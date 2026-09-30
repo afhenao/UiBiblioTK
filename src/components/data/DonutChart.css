@@ -1,0 +1,91 @@
+@layer components {
+	.btk-donut {
+		@apply grid items-center gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-14;
+	}
+
+	.btk-donut__chart {
+		@apply relative mx-auto size-60 sm:size-64 md:size-72;
+	}
+
+	.btk-donut__svg {
+		@apply size-full -rotate-90;
+	}
+
+	/* Cada tramo recibe su color y su retraso de entrada por variables (--btk-donut-color, --btk-donut-delay) */
+	.btk-donut__arc {
+		@apply cursor-pointer transition-[stroke-width,opacity] duration-150 ease-out-strong;
+		fill: none;
+		stroke: var(--btk-donut-color);
+		stroke-width: 14;
+
+		@media (prefers-reduced-motion: no-preference) {
+			animation: var(--animate-draw);
+			animation-delay: var(--btk-donut-delay, 0ms);
+		}
+	}
+
+	.btk-donut__arc--active {
+		stroke-width: 18;
+	}
+
+	.btk-donut__arc--dimmed {
+		@apply opacity-35;
+	}
+
+	.btk-donut__center {
+		@apply pointer-events-none absolute inset-0 grid place-items-center text-center;
+	}
+
+	.btk-donut__value {
+		@apply text-5xl leading-none font-semibold tracking-[-0.045em] text-pine-950;
+	}
+
+	.btk-donut__label {
+		@apply mx-auto mt-2 max-w-28 text-xs leading-snug font-medium text-ink-soft;
+	}
+
+	.btk-donut__share {
+		@apply mt-1 text-xs font-semibold text-pine-900 tabular-nums;
+	}
+
+	.btk-donut__summary {
+		@apply sr-only;
+	}
+
+	.btk-donut__legend {
+		@apply grid gap-1;
+	}
+
+	.btk-donut__item {
+		@apply flex w-full items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left transition-colors duration-150 ease-out-strong hover:bg-sand-100;
+	}
+
+	.btk-donut__item--active {
+		@apply bg-sand-100;
+	}
+
+	.btk-donut__key {
+		@apply flex min-w-0 items-center gap-3;
+	}
+
+	.btk-donut__swatch {
+		@apply size-3 shrink-0 rounded-sm;
+		background-color: var(--btk-donut-color);
+	}
+
+	.btk-donut__name {
+		@apply truncate text-[15px] text-pine-900;
+	}
+
+	.btk-donut__figures {
+		@apply flex shrink-0 items-baseline gap-3;
+	}
+
+	.btk-donut__percent {
+		@apply text-sm text-ink-soft tabular-nums;
+	}
+
+	.btk-donut__count {
+		@apply min-w-10 text-right text-2xl font-semibold tracking-[-0.03em] text-pine-950 tabular-nums;
+	}
+}

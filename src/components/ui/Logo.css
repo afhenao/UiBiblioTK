@@ -1,0 +1,26 @@
+@layer components {
+	.btk-logo {
+		@apply inline-flex items-center gap-2.5;
+	}
+
+	.btk-logo__mark {
+		@apply grid size-9 shrink-0 place-items-center rounded-full border-2 border-honey-600 font-display text-[13px] font-extrabold tracking-[-0.02em] text-honey-700;
+	}
+
+	.btk-logo__wordmark {
+		@apply font-display text-[1.375rem] font-extrabold tracking-[-0.045em] text-pine-950;
+	}
+
+	.btk-logo--light .btk-logo__mark {
+		@apply border-honey-400 text-honey-300;
+	}
+
+	.btk-logo--light .btk-logo__wordmark {
+		@apply text-sand-50;
+	}
+
+	/* `hideWordmarkOnMobile`: en pantallas chicas solo queda el sello (el nombre sigue para lectores de pantalla) */
+	.btk-logo__wordmark--mobile-hidden {
+		@apply max-sm:sr-only;
+	}
+}

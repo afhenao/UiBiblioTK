@@ -1,0 +1,27 @@
+@layer components {
+	.btk-cover {
+		@apply size-full object-cover;
+	}
+
+	/* Sin portada: superficie verde con el título */
+	.btk-cover--empty {
+		@apply grain relative flex size-full items-end overflow-hidden bg-pine-900 p-5 text-sand-50;
+	}
+
+	.btk-cover__icon {
+		@apply absolute top-5 right-5 size-7 text-honey-300;
+	}
+
+	.btk-cover__title {
+		@apply line-clamp-4 font-display text-xl leading-tight font-extrabold tracking-[-0.03em];
+	}
+
+	/* `compacta`: miniatura para tablas y listas, solo con el ícono al centro */
+	.btk-cover--compact {
+		@apply items-center justify-center p-0;
+	}
+
+	.btk-cover--compact .btk-cover__icon {
+		@apply static inset-auto size-5;
+	}
+}

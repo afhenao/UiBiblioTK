@@ -1,36 +1,35 @@
-# @bibliotk/ui
+# bibliotk-ui
 
-Componentes React y tema de Tailwind CSS 4 de BiblioTK.
+Componentes React de BiblioTK con su CSS ya compilado (`bibliotk-ui/styles.css`) y el tema de Tailwind CSS 4 (`bibliotk-ui/theme.css`).
 
-## Uso en una app (Vite + React 19 + Tailwind 4)
+## Uso en una app (Vite + React 19)
 
-1. Coloca esta carpeta al lado de la app y añade la dependencia:
+1. Instala la librería:
 
-   ```json
-   "@bibliotk/ui": "file:../UiBiblioTK"
+   ```bash
+   npm install bibliotk-ui
    ```
 
-2. Importa el tema después de Tailwind:
+2. Crea la hoja de la app y enlázala desde `index.html` (`<link rel="stylesheet" href="/src/app/styles/globals.css" />`):
 
    ```css
-   @import "tailwindcss";
-   @import "@bibliotk/ui/theme.css";
+   @layer theme, base, components, utilities;
+   @import "@fontsource-variable/bricolage-grotesque/opsz.css";
+   @import "@fontsource-variable/geist";
+   @import "bibliotk-ui/styles.css";
+
+   /* Solo si la app usa sus propias utilidades de Tailwind */
+   @import "tailwindcss/theme.css" layer(theme);
+   @import "tailwindcss/utilities.css" layer(utilities);
+   @import "bibliotk-ui/theme.css";
    ```
 
-3. Deduplica las dependencias compartidas en `vite.config.js`:
+3. Fija `IconContext` de Phosphor (`weight: "bold"`, `size: 18`) e importa cada ícono por separado (`@phosphor-icons/react/SignOut`).
 
-   ```js
-   resolve: {
-   	dedupe: ["react", "react-dom", "react-router", "react-router-dom", "@phosphor-icons/react"],
-   },
-   ```
-
-4. Carga las fuentes `@fontsource-variable/bricolage-grotesque/opsz.css` y `@fontsource-variable/geist`, y fija `IconContext` de Phosphor (`weight: "bold"`, `size: 18`).
-
-5. Importa desde la raíz del paquete:
+4. Importa desde la raíz del paquete:
 
    ```jsx
-   import { Button, DonutChart, PanelLayout } from "@bibliotk/ui";
+   import { Button, DonutChart, PanelLayout } from "bibliotk-ui";
    ```
 
 La lista completa de componentes y las reglas del sistema de diseño están en `CLAUDE.md`.
@@ -39,5 +38,6 @@ La lista completa de componentes y las reglas del sistema de diseño están en `
 
 ```bash
 npm install
+npm run build
 npm run check
 ```

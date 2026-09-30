@@ -1,0 +1,21 @@
+@layer components {
+	.btk-checkbox {
+		@apply inline-flex cursor-pointer items-center gap-2.5 text-[13px] text-pine-900 select-none;
+	}
+
+	.btk-checkbox__box {
+		@apply relative grid size-5 shrink-0 place-items-center;
+	}
+
+	.btk-checkbox__input {
+		@apply size-5 cursor-pointer appearance-none rounded-md bg-sand-50 shadow-[inset_0_0_0_1.5px_var(--color-line)] transition-[background-color,box-shadow] duration-150 ease-out-strong checked:bg-pine-900 checked:shadow-none;
+	}
+
+	.btk-checkbox__check {
+		@apply pointer-events-none absolute size-3.5 scale-75 text-sand-50 opacity-0 transition-[opacity,transform] duration-150 ease-out-strong;
+	}
+
+	.btk-checkbox__input:checked + .btk-checkbox__check {
+		@apply scale-100 opacity-100;
+	}
+}

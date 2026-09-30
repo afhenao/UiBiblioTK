@@ -1,0 +1,45 @@
+@layer components {
+	.btk-dialog {
+		@apply m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md overflow-y-auto overscroll-contain rounded-[28px] bg-sand-50 p-0 text-ink shadow-[0_32px_80px_-32px_rgb(11_34_28/0.6)] backdrop:bg-pine-950/50 open:motion-safe:animate-rise-sm backdrop:motion-safe:animate-fade;
+	}
+
+	.btk-dialog__body {
+		@apply relative p-6 sm:p-8;
+	}
+
+	.btk-dialog__icon {
+		@apply grid size-12 place-items-center rounded-2xl;
+	}
+
+	.btk-dialog__icon--neutral {
+		@apply bg-pine-900 text-honey-300;
+	}
+
+	.btk-dialog__icon--danger {
+		@apply bg-clay-50 text-clay-600 shadow-[inset_0_0_0_1px_rgb(163_64_47/0.18)];
+	}
+
+	.btk-dialog__title {
+		@apply pr-10 font-display text-[1.75rem] leading-tight font-extrabold tracking-[-0.035em] text-pine-950;
+	}
+
+	.btk-dialog__icon + .btk-dialog__title {
+		@apply mt-5;
+	}
+
+	.btk-dialog__description {
+		@apply mt-2 text-[15px] leading-relaxed text-ink-soft;
+	}
+
+	.btk-dialog__content {
+		@apply mt-6;
+	}
+
+	.btk-dialog__close {
+		@apply absolute top-4 right-4 grid size-10 place-items-center rounded-full text-ink-soft transition-colors duration-150 hover:bg-pine-900/5 hover:text-pine-900 disabled:opacity-40 sm:top-5 sm:right-5;
+	}
+
+	.btk-dialog__close-icon {
+		@apply size-[18px];
+	}
+}

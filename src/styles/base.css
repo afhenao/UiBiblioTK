@@ -1,0 +1,44 @@
+@layer base {
+	body {
+		background-color: var(--color-sand-100);
+		color: var(--color-ink);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	::selection {
+		background-color: var(--color-honey-200);
+		color: var(--color-pine-950);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-honey-600);
+		outline-offset: 3px;
+	}
+
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
+		cursor: pointer;
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}

@@ -3,9 +3,8 @@ import { cn } from "../../utils/cn.js";
 import { formatNumber, formatPercent } from "../../utils/format.js";
 
 // Unidades del viewBox (120 × 120). Con pathLength="100" cada tramo se mide en porcentaje.
+// El grosor del trazo (14, o 18 en el tramo activo) está en DonutChart.css.
 const radius = 47;
-const strokeWidth = 14;
-const activeStrokeWidth = 18;
 // Separación de superficie entre tramos (~2 px al tamaño renderizado)
 const gap = 0.4;
 const minArc = 0.8;
@@ -44,17 +43,12 @@ function DonutChart({
 	}
 
 	return (
-		<div
-			className={cn(
-				"grid items-center gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-14",
-				className,
-			)}
-		>
-			<div className="relative mx-auto size-60 sm:size-64 md:size-72">
+		<div className={cn("btk-donut", className)}>
+			<div className="btk-donut__chart">
 				<svg
 					viewBox="0 0 120 120"
 					aria-hidden="true"
-					className="size-full -rotate-90"
+					className="btk-donut__svg"
 				>
 					{arcs.map((arc, index) => (
 						// biome-ignore lint/a11y/noStaticElementInteractions: el SVG es decorativo (aria-hidden); la leyenda da la misma interacción con teclado y lector de pantalla
@@ -64,38 +58,34 @@ function DonutChart({
 							cy="60"
 							r={radius}
 							pathLength="100"
-							fill="none"
-							stroke={arc.color}
 							strokeDasharray={`${arc.length} ${100 - arc.length}`}
 							strokeDashoffset={arc.offset}
 							onPointerEnter={() => setHoveredKey(arc.key)}
 							onPointerLeave={() => setHoveredKey(null)}
 							onClick={() => togglePinned(arc.key)}
+							// Solo datos: el color del tramo y su retraso de entrada; los estilos están en DonutChart.css
 							style={{
-								strokeWidth:
-									activeKey === arc.key ? activeStrokeWidth : strokeWidth,
-								animationDelay: `${index * 70}ms`,
+								"--btk-donut-color": arc.color,
+								"--btk-donut-delay": `${index * 70}ms`,
 							}}
 							className={cn(
-								"cursor-pointer transition-[stroke-width,opacity] duration-150 ease-out-strong motion-safe:animate-draw",
-								activeKey && activeKey !== arc.key && "opacity-35",
+								"btk-donut__arc",
+								activeKey === arc.key && "btk-donut__arc--active",
+								activeKey && activeKey !== arc.key && "btk-donut__arc--dimmed",
 							)}
 						/>
 					))}
 				</svg>
-				<div
-					aria-hidden="true"
-					className="pointer-events-none absolute inset-0 grid place-items-center text-center"
-				>
+				<div aria-hidden="true" className="btk-donut__center">
 					<div>
-						<p className="text-5xl leading-none font-semibold tracking-[-0.045em] text-pine-950">
+						<p className="btk-donut__value">
 							{formatValue(activeItem ? activeItem.value : total)}
 						</p>
-						<p className="mx-auto mt-2 max-w-28 text-xs leading-snug font-medium text-ink-soft">
+						<p className="btk-donut__label">
 							{activeItem ? activeItem.label : totalLabel}
 						</p>
 						{activeItem && (
-							<p className="mt-1 text-xs font-semibold text-pine-900 tabular-nums">
+							<p className="btk-donut__share">
 								{formatShare(activeItem.share)}
 							</p>
 						)}
@@ -103,9 +93,9 @@ function DonutChart({
 				</div>
 			</div>
 
-			<p className="sr-only">{`${formatValue(total)} ${totalLabel}`}</p>
+			<p className="btk-donut__summary">{`${formatValue(total)} ${totalLabel}`}</p>
 
-			<ul className="grid gap-1">
+			<ul className="btk-donut__legend">
 				{items.map((item) => (
 					<li key={item.key}>
 						<button
@@ -117,25 +107,23 @@ function DonutChart({
 							onBlur={() => setHoveredKey(null)}
 							onClick={() => togglePinned(item.key)}
 							className={cn(
-								"flex w-full items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left transition-colors duration-150 ease-out-strong hover:bg-sand-100",
-								activeKey === item.key && "bg-sand-100",
+								"btk-donut__item",
+								activeKey === item.key && "btk-donut__item--active",
 							)}
 						>
-							<span className="flex min-w-0 items-center gap-3">
+							<span className="btk-donut__key">
 								<span
 									aria-hidden="true"
-									className="size-3 shrink-0 rounded-sm"
-									style={{ backgroundColor: item.color }}
+									className="btk-donut__swatch"
+									style={{ "--btk-donut-color": item.color }}
 								/>
-								<span className="truncate text-[15px] text-pine-900">
-									{item.label}
-								</span>
+								<span className="btk-donut__name">{item.label}</span>
 							</span>
-							<span className="flex shrink-0 items-baseline gap-3">
-								<span className="text-sm text-ink-soft tabular-nums">
+							<span className="btk-donut__figures">
+								<span className="btk-donut__percent">
 									{formatShare(item.share)}
 								</span>
-								<span className="min-w-10 text-right text-2xl font-semibold tracking-[-0.03em] text-pine-950 tabular-nums">
+								<span className="btk-donut__count">
 									{formatValue(item.value)}
 								</span>
 							</span>

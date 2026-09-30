@@ -1,37 +1,23 @@
-import { CheckCircle, Info, WarningCircle } from "@phosphor-icons/react";
+import { CheckCircle } from "@phosphor-icons/react/CheckCircle";
+import { Info } from "@phosphor-icons/react/Info";
+import { WarningCircle } from "@phosphor-icons/react/WarningCircle";
 import { cn } from "../../utils/cn.js";
 
-const tones = {
-	error: {
-		icon: WarningCircle,
-		className:
-			"bg-clay-50 text-clay-700 shadow-[inset_0_0_0_1px_rgb(163_64_47/0.18)]",
-	},
-	info: {
-		icon: Info,
-		className:
-			"bg-honey-100 text-honey-700 shadow-[inset_0_0_0_1px_rgb(168_112_44/0.2)]",
-	},
-	success: {
-		icon: CheckCircle,
-		className:
-			"bg-pine-50 text-pine-800 shadow-[inset_0_0_0_1px_rgb(47_93_78/0.18)]",
-	},
+const toneIcons = {
+	error: WarningCircle,
+	info: Info,
+	success: CheckCircle,
 };
 
 function Alert({ tone = "error", className, children }) {
-	const { icon: Icon, className: toneClassName } = tones[tone];
+	const Icon = toneIcons[tone];
 
 	return (
 		<div
 			role={tone === "error" ? "alert" : "status"}
-			className={cn(
-				"flex items-start gap-3 rounded-2xl px-4 py-3 text-[13px] font-medium leading-snug motion-safe:animate-rise-sm",
-				toneClassName,
-				className,
-			)}
+			className={cn("btk-alert", `btk-alert--${tone}`, className)}
 		>
-			<Icon aria-hidden="true" className="mt-px size-[18px] shrink-0" />
+			<Icon aria-hidden="true" className="btk-alert__icon" />
 			<div>{children}</div>
 		</div>
 	);

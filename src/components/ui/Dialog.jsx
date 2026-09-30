@@ -1,12 +1,6 @@
-import { X } from "@phosphor-icons/react";
+import { X } from "@phosphor-icons/react/X";
 import { useEffect, useId, useRef } from "react";
 import { cn } from "../../utils/cn.js";
-
-const iconTones = {
-	neutral: "bg-pine-900 text-honey-300",
-	danger:
-		"bg-clay-50 text-clay-600 shadow-[inset_0_0_0_1px_rgb(163_64_47/0.18)]",
-};
 
 function Dialog({
 	open,
@@ -75,49 +69,32 @@ function Dialog({
 			onClick={(event) => {
 				if (event.target === event.currentTarget) requestClose();
 			}}
-			className={cn(
-				"m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md overflow-y-auto overscroll-contain rounded-[28px] bg-sand-50 p-0 text-ink shadow-[0_32px_80px_-32px_rgb(11_34_28/0.6)] backdrop:bg-pine-950/50 open:motion-safe:animate-rise-sm backdrop:motion-safe:animate-fade",
-				className,
-			)}
+			className={cn("btk-dialog", className)}
 		>
-			<div className="relative p-6 sm:p-8">
+			<div className="btk-dialog__body">
 				{icon && (
-					<span
-						className={cn(
-							"grid size-12 place-items-center rounded-2xl",
-							iconTones[tone],
-						)}
-					>
+					<span className={cn("btk-dialog__icon", `btk-dialog__icon--${tone}`)}>
 						{icon}
 					</span>
 				)}
-				<h2
-					id={titleId}
-					className={cn(
-						"pr-10 font-display text-[1.75rem] leading-tight font-extrabold tracking-[-0.035em] text-pine-950",
-						icon && "mt-5",
-					)}
-				>
+				<h2 id={titleId} className="btk-dialog__title">
 					{title}
 				</h2>
 				{description && (
-					<p
-						id={descriptionId}
-						className="mt-2 text-[15px] leading-relaxed text-ink-soft"
-					>
+					<p id={descriptionId} className="btk-dialog__description">
 						{description}
 					</p>
 				)}
-				<div className="mt-6">{children}</div>
+				<div className="btk-dialog__content">{children}</div>
 				{/* Va al final para que el foco inicial caiga en el primer control del contenido */}
 				<button
 					type="button"
 					onClick={requestClose}
 					disabled={!dismissible}
 					aria-label="Cerrar"
-					className="absolute top-4 right-4 grid size-10 place-items-center rounded-full text-ink-soft transition-colors duration-150 hover:bg-pine-900/5 hover:text-pine-900 disabled:opacity-40 sm:top-5 sm:right-5"
+					className="btk-dialog__close"
 				>
-					<X aria-hidden="true" className="size-[18px]" />
+					<X aria-hidden="true" className="btk-dialog__close-icon" />
 				</button>
 			</div>
 		</dialog>

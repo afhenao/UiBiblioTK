@@ -18,6 +18,16 @@
 			"preset": "recommended",
 			"a11y": {
 				"useButtonType": "off"
+			},
+			"style": {
+				"noRestrictedImports": {
+					"level": "error",
+					"options": {
+						"paths": {
+							"@phosphor-icons/react": "Importa cada ícono desde su módulo (@phosphor-icons/react/<Nombre>): el paquete completo pesa varios MB y frena el arranque en desarrollo."
+						}
+					}
+				}
 			}
 		}
 	},
