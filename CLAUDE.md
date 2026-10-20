@@ -10,7 +10,7 @@ Parte del sistema BiblioTK (ver `../CLAUDE.md`). Componentes React compartidos p
 
 ## Cómo se consume
 
-1. `"bibliotk-ui": "^0.2.0"` en la app.
+1. `"bibliotk-ui": "^0.3.0"` en la app (la 0.4.0, con `NotificationCenter`, está lista en `package.json` pero **falta publicarla**: hasta entonces las apps de rol usan una copia en `src/app/components/`).
 2. Una sola hoja en la app, **enlazada desde `index.html`** (`<link rel="stylesheet" href="/src/app/styles/globals.css" />`), nunca importada desde JS:
    ```css
    @layer theme, base, components, utilities;
@@ -54,8 +54,9 @@ Siempre un import por ícono: `import { SignOut } from "@phosphor-icons/react/Si
 | `CoverImage` | `components/ui/CoverImage.jsx` | Portada de un material: prueba `imagenUrl` (Cloudinary optimizado con `f_auto,q_auto` y el `ancho` pedido) y si falla `imagenLocal`; sin ninguna, superficie verde con el título. `compacta` para miniaturas. Llena el contenedor |
 | `Dialog` | `components/ui/Dialog.jsx` | `<dialog>` nativo en modo modal. Props: `open`, `onClose`, `title`, `description`, `icon`, `tone` (`neutral` o `danger`) y `dismissible` |
 | `DonutChart` | `components/data/DonutChart.jsx` | Dona con leyenda interactiva. Props: `segments` `[{ key, label, value, color }]`, `totalLabel`, `formatValue` y `formatShare` |
+| `NotificationCenter` | `components/ui/NotificationCenter.jsx` | **0.4.0.** Botón flotante con contador, panel con el historial y avisos emergentes (`aria-live`). Props: `notifications` `[{ id, titulo, mensaje, fecha, categoria }]`, `unreadCount`, `readUntil` (ISO: resalta las más nuevas mientras el panel está abierto), `toasts`, `onDismissToast(id)`, `onOpen`, `status` (`connected`, `connecting`, `disconnected`) y `toastDuration` (6000 ms). Solo pinta: la conexión la maneja cada app |
 | `cn` | `utils/cn.js` | Une clases |
-| `formatToday`, `formatDate`, `formatNumber`, `formatPercent` | `utils/format.js` | `Intl` en es-ES |
+| `formatToday`, `formatDate`, `formatNumber`, `formatPercent`, `formatRelativeTime` | `utils/format.js` | `Intl` en es-ES. `formatRelativeTime`: "hace 5 minutos", y desde el día anterior la fecha corta |
 
 ## Sistema de diseño (`src/styles/theme.css`)
 

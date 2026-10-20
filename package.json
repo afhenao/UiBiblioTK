@@ -1,55 +1,55 @@
 {
-	"name": "bibliotk-ui",
-	"version": "0.3.0",
-	"private": false,
-	"publishConfig": {
-		"access": "public"
-	},
-	"description": "Componentes React de BiblioTK con su CSS ya compilado, más el tema de Tailwind CSS 4 para las apps.",
-	"type": "module",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"style": "./dist/bibliotk-ui.css",
-	"exports": {
-		".": "./dist/index.js",
-		"./styles.css": "./dist/bibliotk-ui.css",
-		"./theme.css": "./src/styles/theme.css",
-		"./package.json": "./package.json"
-	},
-	"files": [
-		"dist",
-		"src/styles/theme.css"
-	],
-	"sideEffects": [
-		"*.css"
-	],
-	"scripts": {
-		"build": "npm run build:js && npm run build:css",
-		"build:js": "esbuild src/index.js --bundle --format=esm --packages=external --jsx=automatic --outfile=dist/index.js",
-		"build:css": "tailwindcss -i src/styles/index.css -o dist/bibliotk-ui.css --minify",
-		"watch:js": "npm run build:js -- --watch",
-		"watch:css": "npm run build:css -- --watch",
-		"prepack": "npm run build",
-		"format": "biome format --write",
-		"lint": "biome lint --write",
-		"check": "biome check --write"
-	},
-	"peerDependencies": {
-		"@phosphor-icons/react": "^2.1.10",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0",
-		"react-router-dom": "^7.18.0",
-		"tailwindcss": "^4.3.0"
-	},
-	"peerDependenciesMeta": {
-		"tailwindcss": {
-			"optional": true
-		}
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.12",
-		"@tailwindcss/cli": "^4.3.3",
-		"esbuild": "^0.28.2",
-		"tailwindcss": "^4.3.3"
-	}
+  "name": "bibliotk-ui",
+  "version": "0.4.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Componentes React de BiblioTK con su CSS ya compilado, más el tema de Tailwind CSS 4 para las apps.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "style": "./dist/bibliotk-ui.css",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./dist/bibliotk-ui.css",
+    "./theme.css": "./src/styles/theme.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src/styles/theme.css"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "esbuild src/index.js --bundle --format=esm --packages=external --jsx=automatic --outfile=dist/index.js",
+    "build:css": "tailwindcss -i src/styles/index.css -o dist/bibliotk-ui.css --minify",
+    "watch:js": "npm run build:js -- --watch",
+    "watch:css": "npm run build:css -- --watch",
+    "prepack": "npm run build",
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "check": "biome check --write"
+  },
+  "peerDependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.18.0",
+    "tailwindcss": "^4.3.0"
+  },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@tailwindcss/cli": "^4.3.3",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.3"
+  }
 }

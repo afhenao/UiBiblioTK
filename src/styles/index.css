@@ -20,6 +20,7 @@
 @import "../components/ui/CoverImage.css";
 @import "../components/ui/Dialog.css";
 @import "../components/ui/Logo.css";
+@import "../components/ui/NotificationCenter.css";
 @import "../components/ui/TextField.css";
 @import "../components/ui/PasswordField.css";
 @import "../components/layout/AuthLayout.css";
