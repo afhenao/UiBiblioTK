@@ -78,6 +78,9 @@ function NotificationCenter({
 	const [open, setOpen] = useState(false);
 	// Al abrir se marcan como leídas, pero se siguen resaltando las nuevas mientras el panel esté abierto
 	const [highlightAfter, setHighlightAfter] = useState("");
+	// "hace X minutos" se calcula con la hora en que se abrió el panel (explícita: un compilador
+	// que memoriza el render no la deja vieja)
+	const [now, setNow] = useState(() => Date.now());
 	const rootRef = useRef(null);
 	const buttonRef = useRef(null);
 	const panelId = useId();
@@ -108,6 +111,7 @@ function NotificationCenter({
 	function toggle() {
 		if (!open) {
 			setHighlightAfter(readUntil);
+			setNow(Date.now());
 			onOpen?.();
 		}
 		setOpen(!open);
@@ -184,7 +188,7 @@ function NotificationCenter({
 												dateTime={notification.fecha}
 												className="btk-notifications__item-time"
 											>
-												{formatRelativeTime(notification.fecha)}
+												{formatRelativeTime(notification.fecha, now)}
 											</time>
 										</div>
 									</li>
